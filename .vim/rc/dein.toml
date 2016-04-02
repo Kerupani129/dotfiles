@@ -1,0 +1,79 @@
+# 
+# 参考
+#   NeoBundle から dein.vim に乗り換えたら爆速だった話
+#   http://qiita.com/delphinus35/items/00ff2c0ba972c6e41542
+# 
+
+# 
+# dein
+# 
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# 
+# 基本
+# 
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+  [plugins.build]
+  windows = 'tools\\update-dll-mingw'
+  cygwin  = 'make -f make_cygwin.mak'
+  mac     = 'make -f make_mac.mak'
+  linux   = 'make'
+  unix    = 'gmake'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+
+[[plugins]]
+repo = 'vim-jp/autofmt'
+
+[[plugins]]
+repo = 'vim-jp/vim-go-extra'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+# 
+# その他
+# 
+[[plugins]]
+repo = 'itchyny/vim-highlighturl'
+
+[[plugins]]
+repo = 'vim-scripts/dbext.vim'
+
+[[plugins]]
+repo = 'vim-scripts/TwitVim'
+
+[[plugins]]
+repo = 'basyura/TweetVim'
+depends = [
+            'mattn/webapi-vim',
+            'basyura/twibill.vim',
+            'tyru/open-browser.vim',
+            'h1mesuke/unite-outline',
+            'basyura/bitly.vim'
+          ]
+
+# 
+# 依存
+# 
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'basyura/twibill.vim'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'h1mesuke/unite-outline'
+
+[[plugins]]
+repo = 'basyura/bitly.vim'
