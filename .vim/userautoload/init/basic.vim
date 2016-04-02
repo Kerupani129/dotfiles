@@ -1,3 +1,8 @@
+" 起動時は ft=text
+if has('vim_starting')
+  set ft=text
+endif
+
 " vi 互換モードにしない
 set nocompatible
 
@@ -45,3 +50,8 @@ autocmd FileType text setlocal textwidth=0
 
 " 印刷ヘッダ
 set printheader=%<%f%h%m\ (%N\ ページ)
+
+" ランタイムパスの登録
+if has('vim_starting')
+  set runtimepath+=~/.vim/after/
+endif

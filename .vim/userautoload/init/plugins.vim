@@ -2,39 +2,29 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+" ディレクトリ・ファイル設定
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let s:toml = '~/.vim/rc/dein.toml'
+let s:lazy_toml = '~/.vim/rc/dein_lazy.toml'
+
+" dein
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . s:dein_repo_dir
+endif
 
 " 追加
-call dein#begin(expand('~/.vim/dein'))
+call dein#begin(expand(s:dein_dir))
 
-call dein#add('Shougo/dein.vim')
-
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-
-call dein#add('Shougo/vimproc.vim', {
-    \ 'build': {
-    \     'windows': 'tools\\update-dll-mingw',
-    \     'cygwin': 'make -f make_cygwin.mak',
-    \     'mac': 'make -f make_mac.mak',
-    \     'linux': 'make',
-    \     'unix': 'gmake',
-    \    },
-    \ })
-call dein#add('vim-jp/autofmt')
-call dein#add('vim-jp/vim-go-extra')
-call dein#add('vim-jp/vimdoc-ja')
-
-call dein#add('itchyny/vim-highlighturl')
-call dein#add('vim-scripts/dbext.vim')
-call dein#add('vim-scripts/TwitVim')
-call dein#add('basyura/TweetVim')
-
-call dein#add('mattn/webapi-vim')
-call dein#add('basyura/twibill.vim')
-call dein#add('tyru/open-browser.vim')
-call dein#add('h1mesuke/unite-outline')
-call dein#add('basyura/bitly.vim')
+if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#save_cache()
+endif
 
 call dein#end()
 

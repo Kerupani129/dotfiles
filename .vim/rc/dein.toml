@@ -53,12 +53,12 @@ repo = 'vim-scripts/TwitVim'
 [[plugins]]
 repo = 'basyura/TweetVim'
 depends = [
-            'mattn/webapi-vim',
-            'basyura/twibill.vim',
-            'tyru/open-browser.vim',
-            'h1mesuke/unite-outline',
-            'basyura/bitly.vim'
-          ]
+  'mattn/webapi-vim',
+  'basyura/twibill.vim',
+  'tyru/open-browser.vim',
+  'h1mesuke/unite-outline',
+  'basyura/bitly.vim'
+]
 
 # 
 # 依存
