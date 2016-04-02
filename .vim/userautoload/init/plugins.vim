@@ -1,4 +1,4 @@
-" 設定
+﻿" 設定
 if &compatible
   set nocompatible
 endif
@@ -18,15 +18,17 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 " 追加
-call dein#begin(expand(s:dein_dir))
-
-if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
+if dein#load_state(s:dein_dir)
+  
+  call dein#begin(expand(s:dein_dir))
+  
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#save_cache()
+  
+  call dein#end()
+  call dein#save_state()
+  
 endif
-
-call dein#end()
 
 " 自動インストール
 if dein#check_install()
